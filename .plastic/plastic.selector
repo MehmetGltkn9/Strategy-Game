@@ -1,0 +1,4 @@
+repository "Strategy Game@Slowline9@cloud"
+  path "/"
+    br "/main"
+    co "/main"

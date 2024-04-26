@@ -8,13 +8,11 @@ public class MainCore : MonoBehaviour
     public Material matUnselected;
     private GameObject currentSelectedObject;
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) {   // Mouse button "0" clicked

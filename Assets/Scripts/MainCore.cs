@@ -15,7 +15,7 @@ public class MainCore : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {   // Mouse button "0" clicked
+        if (Input.GetMouseButtonDown(0)) {   // Left mouse button "0" clicked
 
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -43,7 +43,7 @@ public class MainCore : MonoBehaviour
 
             else {  // Ray did not hit to a building or a unit
                 
-                if (currentSelectedObject != null) { // There is already a selected object 
+                if (currentSelectedObject != null) { // There already is a selected object 
 
                     MeshRenderer mrOld = currentSelectedObject.GetComponent<MeshRenderer>();
 
@@ -53,8 +53,36 @@ public class MainCore : MonoBehaviour
 
                     currentSelectedObject = null;
                 }
+
             }
 
         }
+
+        else if (Input.GetMouseButtonDown(1)) { // Right mouse button "1" clicked
+
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (currentSelectedObject != null) {
+
+                LayerMask lm = LayerMask.GetMask("Unit");
+                if (lm == (1 << currentSelectedObject.layer)){
+
+                    if (Physics.Raycast(ray,out hit, 100.0f, LayerMask.GetMask("Terrain"))){
+
+                        Unit u = currentSelectedObject.GetComponentInParent<Unit>();
+                        if (u != null){
+                            u.Walk(hit.point);
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
     }
+
 }

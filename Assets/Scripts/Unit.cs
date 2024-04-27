@@ -19,8 +19,8 @@ public class Unit : MonoBehaviour
         
     }
 
-    public void Walk(Transform goal)
+    public void Walk(Vector3 goal)
     {
-        agent.SetDestination(goal.position);
+        agent.SetDestination(goal);
     }
 }

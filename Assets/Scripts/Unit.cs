@@ -9,6 +9,8 @@ public class Unit : MonoBehaviour
     public float health;
     public float damage;
 
+    public 
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -29,4 +31,10 @@ public class Unit : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
     }
+
+    public void GoToBuilding(Building b)
+    {
+
+    }
+
 }

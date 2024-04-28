@@ -23,4 +23,10 @@ public class Unit : MonoBehaviour
     {
         agent.SetDestination(goal);
     }
+
+    public void SetAgent(){
+
+        agent = GetComponent<NavMeshAgent>();
+
+    }
 }

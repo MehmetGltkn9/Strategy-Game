@@ -66,13 +66,32 @@ public class MainCore : MonoBehaviour
             if (currentSelectedObject != null) {
 
                 LayerMask lm = LayerMask.GetMask("Unit");
-                if (lm == (1 << currentSelectedObject.layer)){
+
+                if (lm == (lm | 1 << currentSelectedObject.layer)){
 
                     if (Physics.Raycast(ray,out hit, 100.0f, LayerMask.GetMask("Terrain"))){
 
                         Unit u = currentSelectedObject.GetComponentInParent<Unit>();
                         if (u != null){
                             u.Walk(hit.point);
+                        }
+
+                    }
+
+                }
+
+                lm = LayerMask.GetMask("Building");
+
+                if (lm == (lm | 1 << currentSelectedObject.layer))
+                {
+
+                    if (Physics.Raycast(ray, out hit, 100.0f, LayerMask.GetMask("Terrain")))
+                    {
+
+                        Building b = currentSelectedObject.GetComponentInParent<Building>();
+                        if (b != null)
+                        {
+                            b.SetArrivePoint(hit.point);
                         }
 
                     }
